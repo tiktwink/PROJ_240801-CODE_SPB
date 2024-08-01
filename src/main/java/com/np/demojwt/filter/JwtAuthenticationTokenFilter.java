@@ -70,12 +70,12 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     }*/
     
     //3. 提取token负载信息(username)
-    Map<String, Claim> claims = tokenValid.getClaims();
+    /*Map<String, Claim> claims = tokenValid.getClaims();
     String username = claims.get("username").asString(); //❗将Claim对象转String
     String usernameInRequest = request.getHeader("username");
     if (!username.equals(usernameInRequest)) {
       throw new RuntimeException("username not matched");
-    }
+    }*/
     
     //TODO‼️额外添加一步：如果token验证成功，但是即将过期，则为用户创建新的token并返回
     // ‼️方案一：将本函数返回值由void改为String，如果不需要刷新token这返回null，否则返回新token，缺点是每次鉴权请求中都要附带一次token过期校验，且只对需要鉴权的接口有效，对于不需要鉴权的接口，该方案不会校验token，自然也不会校验token是否过期

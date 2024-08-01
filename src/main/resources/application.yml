@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: demo-jwt
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/work408?characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: s1234568
+
+    hikari:
+      pool-name: HikariCP #????
+      maximum-pool-size: 20
+      minimum-idle: 10
+      connection-timeout: 30000
+      max-lifetime: 1800000
+      idle-timeout: 600000
+      auto-commit: true #?????????true
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+#  data:
+#    redis:
+#      host: 127.0.0.1
+#      database: 0
+#      port: 6379
+#      lettuce:
+#        pool:
+#          max-active: 8
+#          min-idle: 0
+#          max-idle: 8
+#          max-wait: -1
+#      timeout: 10000
+
+#logging:
+#  #  level:
+#  #    root: info
+#  pattern:
+#    console: '%d{HH:mm:ss} %-5level \u2139\uFE0F %msg \uD83D\uDCAD %logger{36}%n'
+

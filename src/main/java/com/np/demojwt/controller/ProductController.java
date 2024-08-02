@@ -23,10 +23,24 @@ public class ProductController {
     if(product.getProductId() != null){
       Product prod = productService.getById(product.getProductId());
       if(prod != null) return Result.success(List.of(prod));
-      else return Result.fail("Product not found");
+      else return Result.fail("没有找到产品信息");
     }
     
     return productService.getProductList(product);
+  }
+  
+  @PostMapping("/add")
+  public Result addProduct(@RequestBody Product product){
+    boolean b  = productService.save(product) ;
+    if(b) return Result.success("Product added successfully",product.getProductId());
+    else return Result.fail("Product not added");
+  }
+  
+  @PostMapping("/update")
+  public Result updateProduct(@RequestBody Product product){
+    boolean b = productService.updateById(product);
+    if(b) return Result.success("Product updated successfully",product);
+    else return Result.fail("Product not updated");
   }
   
 }

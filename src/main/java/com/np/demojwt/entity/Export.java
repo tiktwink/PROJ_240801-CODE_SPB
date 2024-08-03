@@ -18,14 +18,14 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table("import")
-public class Import implements Serializable {
+@Table("export")
+public class Export implements Serializable {
   
   @Serial
-  private static final long serialVersionUID = 4L;
+  private static final long serialVersionUID = 5L;
   
   @Id(keyType = KeyType.Auto)
-  private Integer importId;
+  private Integer exportId;
   
   private Long timestamp;
   private Long createTimestamp;
@@ -45,9 +45,9 @@ public class Import implements Serializable {
   private Double totalCostAfterOff;
   
   @Column(isLarge = true)
-  private String importContentJstring;
+  private String exportContentJstring;
   
   @Column(ignore = true)
-  private List<ProductVo> importContent;
+  private List<ProductVo> exportContent;
   
 }

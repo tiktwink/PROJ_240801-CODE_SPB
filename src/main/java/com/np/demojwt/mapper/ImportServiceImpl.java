@@ -23,7 +23,7 @@ public class ImportServiceImpl extends ServiceImpl<ImportMapper, Import> impleme
     
     double totalCost = 0;
     for (ProductVo productVo : productVoList) {
-      totalCost += productVo.getCost();
+      totalCost += (productVo.getPrice() * productVo.getCount());
     }
     im.setTotalCost(totalCost);
     
@@ -32,11 +32,15 @@ public class ImportServiceImpl extends ServiceImpl<ImportMapper, Import> impleme
       totalCount += productVo.getCount();
     }
     im.setTotalCount(totalCount);
+    if (im.getOffRate() == null) im.setOffRate(0.0);
     
-    im.setImportContentJstring(JSON.toJSONString(im.getImportContent()));
+    im.setImportId(null);
+    im.setTotalCostAfterOff(null); //数据库自动执行计算  im.setTotalCostAfterOff(im.getTotalCost()*(1-im.getOffRate()));
+    
+    im.setImportContentJstring(JSON.toJSONString(productVoList));
     
     int i = importMapper.insertSelective(im);
-    if(i>0) return im.getImportId();
+    if (i > 0) return im.getImportId();
     else return null;
   }
 }

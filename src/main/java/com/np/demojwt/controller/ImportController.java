@@ -18,7 +18,7 @@ public class ImportController {
   
   @PostMapping("/add")
   public Result addImport(@RequestBody Import im) {
-    System.out.println(im);
+//    System.out.println(im);
     Integer id = importService.addImport(im);
     
     if (id != null) return Result.success("添加成功", id);

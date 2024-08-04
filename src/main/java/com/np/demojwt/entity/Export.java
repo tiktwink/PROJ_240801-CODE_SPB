@@ -24,8 +24,8 @@ public class Export implements Serializable {
   @Serial
   private static final long serialVersionUID = 5L;
   
-  @Id(keyType = KeyType.Auto)
-  private Integer exportId;
+  @Id(keyType = KeyType.None)
+  private String exportId;  //需要系统自动生成，生成规则：RK(固定)+19(年份2位)+08(月份)+3位流水号，比如RK1908001
   
   private Long timestamp;
   private Long createTimestamp;

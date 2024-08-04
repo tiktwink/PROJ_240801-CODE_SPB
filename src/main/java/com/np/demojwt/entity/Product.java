@@ -26,4 +26,5 @@ public class Product implements Serializable {
   private String productCode;
   private String productSpec;
   private String productUnit;
+  private Integer productCount;
 }

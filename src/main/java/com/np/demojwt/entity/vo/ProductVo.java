@@ -13,6 +13,7 @@ public class ProductVo {
   private String productCode;
   private String productSpec;
   private String productUnit;
+  private Integer productCount;
   
   private String contactId;
   private Integer count;

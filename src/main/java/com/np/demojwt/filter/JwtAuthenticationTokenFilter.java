@@ -32,14 +32,14 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     
     try { //1. ❗放行接口
       if (!uri.equals("/user/login") && !uri.startsWith("/query")) {
-        System.out.println("即将校验token");
+//        System.out.println("即将校验token");
         //2. 校验token、认证
         this.validateToken(request);
-        System.out.println("token校验、认证成功");
+//        System.out.println("token校验、认证成功");
       }
     } catch (Exception e) {
       // System.out.println("捕获到AuthenticationException异常🚫🚫🚫");
-      throw new RuntimeException();//❗捕获到异常后，应该终止对请求的处理
+      throw new RuntimeException(e);//❗捕获到异常后，应该终止对请求的处理
     }
     //若上一步抛出异常此处不会再放行，直接返回错误信息
     //3. 放行（继续后续过滤器）

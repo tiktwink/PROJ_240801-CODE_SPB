@@ -24,8 +24,8 @@ public class Import implements Serializable {
   @Serial
   private static final long serialVersionUID = 4L;
   
-  @Id(keyType = KeyType.Auto)
-  private Integer importId;
+  @Id(keyType = KeyType.None)
+  private String importId;
   
   private Long timestamp;
   private Long createTimestamp;
